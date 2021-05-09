@@ -53,7 +53,7 @@ def check_feed():
       print(f"Checked RSS FEED: {entry.id}")
 
       
-def check_feed1():
+def check_feed():
     FEED = feedparser.parse(feed_url1)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url1).link:
@@ -71,7 +71,7 @@ def check_feed1():
       print(f"Checked RSS FEED: {entry.id}")
       
 
-def check_feed2():
+def check_feed():
     FEED = feedparser.parse(feed_url2)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
@@ -89,7 +89,7 @@ def check_feed2():
       print(f"Checked RSS FEED: {entry.id}")
       
 
-def check_feed3():
+def check_feed():
     FEED = feedparser.parse(feed_url3)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url3).link:
@@ -107,7 +107,7 @@ def check_feed3():
       print(f"Checked RSS FEED: {entry.id}")
       
       
-def check_feed4():
+def check_feed():
     FEED = feedparser.parse(feed_url4)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url4).link:
@@ -125,7 +125,7 @@ def check_feed4():
       print(f"Checked RSS FEED: {entry.id}")      
       
       
-def check_feed5():
+def check_feed():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
@@ -143,7 +143,7 @@ def check_feed5():
       print(f"Checked RSS FEED: {entry.id}")     
       
       
-def check_feed6():
+def check_feed():
     FEED = feedparser.parse(feed_url6)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url6).link:
@@ -161,7 +161,7 @@ def check_feed6():
       print(f"Checked RSS FEED: {entry.id}")   
       
       
-def check_feed7():
+def check_feed():
     FEED = feedparser.parse(feed_url7)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url7).link:
