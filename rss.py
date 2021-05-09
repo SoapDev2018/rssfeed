@@ -27,6 +27,7 @@ feed_url14 = ""   # RSS Feed URL of the site.
 feed_url15 = ""   # RSS Feed URL of the site.
 feed_url16 = ""   # RSS Feed URL of the site.
 feed_url17 = ""   # RSS Feed URL of the site.
+feed_url18 = ""   # RSS Feed URL of the site.
 bot_token = ""   # Get it by creating a bot on https://t.me/botfather
 log_channel = ""   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
 check_interval = 5   # Check Interval in seconds.  
@@ -52,6 +53,7 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   feed_url15 = os.environ.get("FEED_URL15")
   feed_url16 = os.environ.get("FEED_URL16")
   feed_url17 = os.environ.get("FEED_URL17")
+  feed_url18 = os.environ.get("FEED_URL18")
   bot_token = os.environ.get("BOT_TOKEN")
   log_channel = int(os.environ.get("LOG_CHANNEL", None))
   check_interval = int(os.environ.get("INTERVAL", 5))
@@ -111,7 +113,7 @@ def check_feed2():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url2, entry.id)
@@ -155,7 +157,7 @@ def check_feed4():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url4).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url4, entry.id)
@@ -199,7 +201,7 @@ def check_feed6():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url6).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url6, entry.id)
@@ -244,7 +246,7 @@ def check_feed8():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url8).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url8, entry.id)
@@ -290,7 +292,7 @@ def check_feed10():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url10).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url10, entry.id)
@@ -336,7 +338,7 @@ def check_feed12():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url12).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url12, entry.id)
@@ -382,7 +384,7 @@ def check_feed14():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url14).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url14, entry.id)
@@ -428,7 +430,7 @@ def check_feed16():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url16).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url16, entry.id)
@@ -463,6 +465,28 @@ def check_feed17():
     else:
       print(f"Checked RSS FEED: {entry.id}")  
       
+if db.get_link(feed_url18) == None:
+   db.update_link(feed_url18, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed18():
+    FEED = feedparser.parse(feed_url18)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url18).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/dank {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url18, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed1, "interval", seconds=check_interval, max_instances=max_instances)
@@ -482,5 +506,6 @@ scheduler.add_job(check_feed14, "interval", seconds=check_interval, max_instance
 scheduler.add_job(check_feed15, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed16, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed17, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed18, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.start()
 app.run()
