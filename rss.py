@@ -37,8 +37,8 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   check_interval = int(os.environ.get("INTERVAL", 5))
   max_instances = int(os.environ.get("MAX_INSTANCES", 5))
 
-if db.get_link(feed_url,feed_url1,feed_url2,feed_url3,feed_url4,feed_url5,feed_url6,feed_url7) == None:
-   db.update_link(feed_url,feed_url1,feed_url2,feed_url3,feed_url4,feed_url5,feed_url6,feed_url7, "*")
+if db.get_link(feed_url) == None:
+   db.update_link(feed_url, "*")
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
@@ -58,8 +58,13 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")
-           
-def check_feed():
+
+if db.get_link(feed_url1) == None:
+   db.update_link(feed_url1, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed1():
     FEED = feedparser.parse(feed_url1)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url1).link:
@@ -75,8 +80,13 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")
+
+if db.get_link(feed_url2) == None:
+   db.update_link(feed_url2, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed():
+def check_feed2():
     FEED = feedparser.parse(feed_url2)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
@@ -93,7 +103,12 @@ def check_feed():
     else:
       print(f"Checked RSS FEED: {entry.id}")
 
-def check_feed():
+if db.get_link(feed_url3) == None:
+   db.update_link(feed_url3, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed3():
     FEED = feedparser.parse(feed_url3)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url3).link:
@@ -109,8 +124,13 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")    
+
+if db.get_link(feed_url4) == None:
+   db.update_link(feed_url4, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed():
+def check_feed4():
     FEED = feedparser.parse(feed_url4)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url4).link:
@@ -126,8 +146,13 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")      
-            
-def check_feed():
+
+ if db.get_link(feed_url5) == None:
+   db.update_link(feed_url5, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)     
+      
+def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
@@ -143,8 +168,13 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")     
-           
-def check_feed():
+
+if db.get_link(feed_url6) == None:
+   db.update_link(feed_url6, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed6():
     FEED = feedparser.parse(feed_url6)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url6).link:
@@ -160,8 +190,13 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")   
-            
-def check_feed():
+
+if db.get_link(feed_url7) == None:
+   db.update_link(feed_url7, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed7():
     FEED = feedparser.parse(feed_url7)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url7).link:
@@ -181,5 +216,12 @@ def check_feed():
       
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed1, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed2, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed3, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed4, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed5, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed6, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed7, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.start()
 app.run()
