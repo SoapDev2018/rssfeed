@@ -38,7 +38,7 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   max_instances = int(os.environ.get("MAX_INSTANCES", 5))
 
 if db.get_link(feed_url) == None:
-  db.update_link(feed_url, "*")
+   db.update_link(feed_url, "*")
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
@@ -58,7 +58,11 @@ def check_feed():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")
+      
+if db.get_link(feed_url1) == None:
+   db.update_link(feed_url1, "*")
 
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
       
 def check_feed1():
     FEED = feedparser.parse(feed_url1)
@@ -76,8 +80,12 @@ def check_feed1():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")
-      
 
+if db.get_link(feed_url2) == None:
+   db.update_link(feed_url2, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+      
 def check_feed2():
     FEED = feedparser.parse(feed_url2)
     entry = FEED.entries[0]
@@ -95,6 +103,10 @@ def check_feed2():
     else:
       print(f"Checked RSS FEED: {entry.id}")
       
+if db.get_link(feed_url3) == None:
+   db.update_link(feed_url3, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 def check_feed3():
     FEED = feedparser.parse(feed_url3)
@@ -113,6 +125,10 @@ def check_feed3():
     else:
       print(f"Checked RSS FEED: {entry.id}")
       
+if db.get_link(feed_url4) == None:
+   db.update_link(feed_url4, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
 def check_feed4():
     FEED = feedparser.parse(feed_url4)
@@ -131,7 +147,11 @@ def check_feed4():
     else:
       print(f"Checked RSS FEED: {entry.id}")      
       
-      
+if db.get_link(feed_url5) == None:
+   db.update_link(feed_url5, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+            
 def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
@@ -149,7 +169,11 @@ def check_feed5():
     else:
       print(f"Checked RSS FEED: {entry.id}")     
       
-      
+if db.get_link(feed_url6) == None:
+   db.update_link(feed_url6, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+           
 def check_feed6():
     FEED = feedparser.parse(feed_url6)
     entry = FEED.entries[0]
@@ -167,7 +191,11 @@ def check_feed6():
     else:
       print(f"Checked RSS FEED: {entry.id}")   
       
-      
+if db.get_link(feed_url7) == None:
+   db.update_link(feed_url7, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+            
 def check_feed7():
     FEED = feedparser.parse(feed_url7)
     entry = FEED.entries[0]
