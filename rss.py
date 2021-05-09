@@ -10,6 +10,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 api_id = ""   # Get it from my.telegram.org
 api_hash = ""   # Get it from my.telegram.org
 feed_url = ""   # RSS Feed URL of the site.
+feed_url1 = ""   # RSS Feed URL of the site.
 bot_token = ""   # Get it by creating a bot on https://t.me/botfather
 log_channel = ""   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
 check_interval = 5   # Check Interval in seconds.  
@@ -45,8 +46,133 @@ def check_feed():
     else:
       print(f"Checked RSS FEED: {entry.id}")
 
+      
+def check_feed1():
+    FEED = feedparser.parse(feed_url1)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url1).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url1, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
 
+def check_feed2():
+    FEED = feedparser.parse(feed_url2)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url2).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url2, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
 
+def check_feed3():
+    FEED = feedparser.parse(feed_url3)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url3).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url3, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
+      
+def check_feed4():
+    FEED = feedparser.parse(feed_url4)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url4).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url4, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")      
+      
+      
+def check_feed5():
+    FEED = feedparser.parse(feed_url5)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url5).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url5, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")     
+      
+      
+def check_feed6():
+    FEED = feedparser.parse(feed_url6)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url6).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url6, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")   
+      
+      
+def check_feed7():
+    FEED = feedparser.parse(feed_url7)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url7).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url7, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")  
+      
+      
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.start()
