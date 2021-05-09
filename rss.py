@@ -262,7 +262,7 @@ if db.get_link(feed_url9) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed9():
     FEED = feedparser.parse(feed_url9)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url9).link:
@@ -285,7 +285,7 @@ if db.get_link(feed_url10) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed10():
     FEED = feedparser.parse(feed_url10)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url10).link:
@@ -308,7 +308,7 @@ if db.get_link(feed_url11) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed11():
     FEED = feedparser.parse(feed_url11)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url11).link:
@@ -331,7 +331,7 @@ if db.get_link(feed_url12) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed12():
     FEED = feedparser.parse(feed_url12)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url12).link:
@@ -354,7 +354,7 @@ if db.get_link(feed_url13) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed13():
     FEED = feedparser.parse(feed_url13)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url13).link:
@@ -377,7 +377,7 @@ if db.get_link(feed_url14) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed14():
     FEED = feedparser.parse(feed_url14)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url14).link:
@@ -400,7 +400,7 @@ if db.get_link(feed_url15) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed15():
     FEED = feedparser.parse(feed_url15)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url15).link:
@@ -423,7 +423,7 @@ if db.get_link(feed_url16) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed16():
     FEED = feedparser.parse(feed_url16)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url16).link:
@@ -446,7 +446,7 @@ if db.get_link(feed_url17) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed17():
     FEED = feedparser.parse(feed_url17)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url17).link:
