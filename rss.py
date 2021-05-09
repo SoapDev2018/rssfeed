@@ -64,7 +64,7 @@ if db.get_link(feed_url1) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
       
-def check_feed1():
+def check_feed():
     FEED = feedparser.parse(feed_url1)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url1).link:
@@ -86,7 +86,7 @@ if db.get_link(feed_url2) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
       
-def check_feed2():
+def check_feed():
     FEED = feedparser.parse(feed_url2)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
@@ -108,7 +108,7 @@ if db.get_link(feed_url3) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-def check_feed3():
+def check_feed():
     FEED = feedparser.parse(feed_url3)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url3).link:
@@ -130,7 +130,7 @@ if db.get_link(feed_url4) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed4():
+def check_feed():
     FEED = feedparser.parse(feed_url4)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url4).link:
@@ -152,7 +152,7 @@ if db.get_link(feed_url5) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
             
-def check_feed5():
+def check_feed():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
@@ -174,7 +174,7 @@ if db.get_link(feed_url6) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
            
-def check_feed6():
+def check_feed():
     FEED = feedparser.parse(feed_url6)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url6).link:
@@ -196,7 +196,7 @@ if db.get_link(feed_url7) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
             
-def check_feed7():
+def check_feed():
     FEED = feedparser.parse(feed_url7)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url7).link:
