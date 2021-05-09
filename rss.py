@@ -239,7 +239,7 @@ if db.get_link(feed_url8) == None:
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
       
-def check_feed7():
+def check_feed8():
     FEED = feedparser.parse(feed_url8)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url8).link:
