@@ -28,6 +28,8 @@ feed_url15 = ""   # RSS Feed URL of the site.
 feed_url16 = ""   # RSS Feed URL of the site.
 feed_url17 = ""   # RSS Feed URL of the site.
 feed_url18 = ""   # RSS Feed URL of the site.
+feed_url19 = ""   # RSS Feed URL of the site.
+feed_url20 = ""   # RSS Feed URL of the site.
 bot_token = ""   # Get it by creating a bot on https://t.me/botfather
 log_channel = ""   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
 check_interval = 5   # Check Interval in seconds.  
@@ -54,6 +56,8 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   feed_url16 = os.environ.get("FEED_URL16")
   feed_url17 = os.environ.get("FEED_URL17")
   feed_url18 = os.environ.get("FEED_URL18")
+  feed_url18 = os.environ.get("FEED_URL19")
+  feed_url18 = os.environ.get("FEED_URL20")
   bot_token = os.environ.get("BOT_TOKEN")
   log_channel = int(os.environ.get("LOG_CHANNEL", None))
   check_interval = int(os.environ.get("INTERVAL", 5))
@@ -487,6 +491,50 @@ def check_feed18():
     else:
       print(f"Checked RSS FEED: {entry.id}")
       
+if db.get_link(feed_url19) == None:
+   db.update_link(feed_url19, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed19():
+    FEED = feedparser.parse(feed_url19)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url19).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/get {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url19, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
+if db.get_link(feed_url20) == None:
+   db.update_link(feed_url20, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed20():
+    FEED = feedparser.parse(feed_url20)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url20).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/get {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url20, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed1, "interval", seconds=check_interval, max_instances=max_instances)
@@ -507,5 +555,7 @@ scheduler.add_job(check_feed15, "interval", seconds=check_interval, max_instance
 scheduler.add_job(check_feed16, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed17, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed18, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed19, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed20, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.start()
 app.run()
