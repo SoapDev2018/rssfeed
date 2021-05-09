@@ -147,7 +147,7 @@ def check_feed4():
     else:
       print(f"Checked RSS FEED: {entry.id}")      
 
- if db.get_link(feed_url5) == None:
+if db.get_link(feed_url5) == None:
    db.update_link(feed_url5, "*")
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)     
