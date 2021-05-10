@@ -187,7 +187,7 @@ def check_feed5():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/get {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url5, entry.id)
@@ -571,7 +571,7 @@ def check_feed22():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url22).link:
                    # ↓ Edit this message as your needs.
-      message = f"/get {entry.link}"
+      message = f"/mirror {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url22, entry.id)
