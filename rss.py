@@ -31,6 +31,7 @@ feed_url18 = ""   # RSS Feed URL of the site.
 feed_url19 = ""   # RSS Feed URL of the site.
 feed_url20 = ""   # RSS Feed URL of the site.
 feed_url21 = ""   # RSS Feed URL of the site.
+feed_url22 = ""   # RSS Feed URL of the site.
 bot_token = ""   # Get it by creating a bot on https://t.me/botfather
 log_channel = ""   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
 check_interval = 5   # Check Interval in seconds.  
@@ -60,10 +61,11 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   feed_url19 = os.environ.get("FEED_URL19")
   feed_url20 = os.environ.get("FEED_URL20")
   feed_url21 = os.environ.get("FEED_URL21")
+  feed_url22 = os.environ.get("FEED_URL22")
   bot_token = os.environ.get("BOT_TOKEN")
   log_channel = int(os.environ.get("LOG_CHANNEL", None))
-  check_interval = int(os.environ.get("INTERVAL", 5))
-  max_instances = int(os.environ.get("MAX_INSTANCES", 5))
+  check_interval = int(os.environ.get("INTERVAL", 60))
+  max_instances = int(os.environ.get("MAX_INSTANCES", 10))
 
 if db.get_link(feed_url) == None:
    db.update_link(feed_url, "*")
@@ -558,6 +560,28 @@ def check_feed21():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")      
+
+if db.get_link(feed_url22) == None:
+   db.update_link(feed_url22, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed22():
+    FEED = feedparser.parse(feed_url22)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url22).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/get {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url22, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")      
       
       
 scheduler = BackgroundScheduler()
@@ -583,5 +607,6 @@ scheduler.add_job(check_feed18, "interval", seconds=check_interval, max_instance
 scheduler.add_job(check_feed19, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed20, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.add_job(check_feed21, "interval", seconds=check_interval, max_instances=max_instances)
+scheduler.add_job(check_feed22, "interval", seconds=check_interval, max_instances=max_instances)
 scheduler.start()
 app.run()
