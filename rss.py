@@ -48,6 +48,8 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   feed_url12 = os.environ.get("FEED_URL12")
   feed_url13 = os.environ.get("FEED_URL13")
   feed_url14 = os.environ.get("FEED_URL14")
+  feed_url15 = os.environ.get("FEED_URL13")
+  feed_url16 = os.environ.get("FEED_URL14")  
   bot_token = os.environ.get("BOT_TOKEN")
   log_channel = int(os.environ.get("LOG_CHANNEL", None))
   check_interval = int(os.environ.get("INTERVAL", 5))
