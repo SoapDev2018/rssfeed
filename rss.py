@@ -24,6 +24,8 @@ feed_url11 = ""   # RSS Feed URL of the site.
 feed_url12 = ""   # RSS Feed URL of the site.
 feed_url13 = ""   # RSS Feed URL of the site.
 feed_url14 = ""   # RSS Feed URL of the site.
+feed_url15 = ""   # RSS Feed URL of the site.
+feed_url16 = ""   # RSS Feed URL of the site.
 bot_token = ""   # Get it by creating a bot on https://t.me/botfather
 log_channel = ""   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
 check_interval = 5   # Check Interval in seconds.  
@@ -386,6 +388,50 @@ def check_feed14():
     else:
       print(f"Checked RSS FEED: {entry.id}")
       
+if db.get_link(feed_url15) == None:
+   db.update_link(feed_url15, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed15():
+    FEED = feedparser.parse(feed_url15)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url15).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/dank {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url15, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")
+      
+if db.get_link(feed_url16) == None:
+   db.update_link(feed_url16, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed16():
+    FEED = feedparser.parse(feed_url16)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url16).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/mirror {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url16, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")      
+      
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.add_job(check_feed1, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
@@ -402,5 +448,7 @@ scheduler.add_job(check_feed11, "interval", seconds=check_interval, max_instance
 scheduler.add_job(check_feed12, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.add_job(check_feed13, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.add_job(check_feed14, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
+scheduler.add_job(check_feed15, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
+scheduler.add_job(check_feed16, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.start()
 app.run()
