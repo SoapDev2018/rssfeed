@@ -350,10 +350,10 @@ def check_feed13():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url13).link:
                    # ↓ Edit this message as your needs.
-      message = f"/bonk {entry.link}"
+      message = f"/mirror {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url12, entry.id)
+        db.update_link(feed_url13, entry.id)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
