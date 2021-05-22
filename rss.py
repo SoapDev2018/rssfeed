@@ -22,6 +22,7 @@ feed_url9 = ""   # RSS Feed URL of the site.
 feed_url10 = ""   # RSS Feed URL of the site.
 feed_url11 = ""   # RSS Feed URL of the site.
 feed_url12 = ""   # RSS Feed URL of the site.
+feed_url13 = ""   # RSS Feed URL of the site.
 bot_token = ""   # Get it by creating a bot on https://t.me/botfather
 log_channel = ""   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
 check_interval = 5   # Check Interval in seconds.  
@@ -42,6 +43,7 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   feed_url10 = os.environ.get("FEED_URL10")
   feed_url11 = os.environ.get("FEED_URL11")
   feed_url12 = os.environ.get("FEED_URL12")
+  feed_url13 = os.environ.get("FEED_URL13")  
   bot_token = os.environ.get("BOT_TOKEN")
   log_channel = int(os.environ.get("LOG_CHANNEL", None))
   check_interval = int(os.environ.get("INTERVAL", 5))
@@ -337,7 +339,28 @@ def check_feed12():
         print(e)
     else:
       print(f"Checked RSS FEED: {entry.id}")        
-    
+
+if db.get_link(feed_url13) == None:
+   db.update_link(feed_url13, "*")
+
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)      
+      
+def check_feed13():
+    FEED = feedparser.parse(feed_url13)
+    entry = FEED.entries[0]
+    if entry.id != db.get_link(feed_url13).link:
+                   # ↓ Edit this message as your needs.
+      message = f"/bonk {entry.link}"
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url12, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
+    else:
+      print(f"Checked RSS FEED: {entry.id}")         
       
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
@@ -353,5 +376,6 @@ scheduler.add_job(check_feed9, "interval", seconds=check_interval, max_instances
 scheduler.add_job(check_feed10, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.add_job(check_feed11, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.add_job(check_feed12, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
+scheduler.add_job(check_feed13, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
 scheduler.start()
 app.run()
