@@ -400,7 +400,7 @@ def check_feed15():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url15).link:
                    # ↓ Edit this message as your needs.
-      message = f"/dank {entry.link}"
+      message = f"/kink {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url15, entry.id)
