@@ -422,7 +422,7 @@ def check_feed16():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url16).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/get {entry.links[1]['href']}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url16, entry.id)
