@@ -356,7 +356,7 @@ def check_feed13():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url13).link:
                    # ↓ Edit this message as your needs.
-      message = f"/get {entry.links[1]['href']}"
+      message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url13, entry.id)
@@ -422,7 +422,7 @@ def check_feed16():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url16).link:
                    # ↓ Edit this message as your needs.
-      message = f"/get {entry.links[1]['href']}"
+      message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url16, entry.id)
