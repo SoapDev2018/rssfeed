@@ -97,7 +97,7 @@ def check_feed1():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")
+      print(f"Checked RSS FEED1: {entry.id}")
 
 if db.get_link(feed_url2) == None:
    db.update_link(feed_url2, "*")
@@ -119,7 +119,7 @@ def check_feed2():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")
+      print(f"Checked RSS FEED2: {entry.id}")
 
 if db.get_link(feed_url3) == None:
    db.update_link(feed_url3, "*")
@@ -141,7 +141,7 @@ def check_feed3():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")    
+      print(f"Checked RSS FEED3: {entry.id}")    
 
 if db.get_link(feed_url4) == None:
    db.update_link(feed_url4, "*")
@@ -163,7 +163,7 @@ def check_feed4():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")      
+      print(f"Checked RSS FEED4: {entry.id}")      
 
 if db.get_link(feed_url5) == None:
    db.update_link(feed_url5, "*")
@@ -185,7 +185,7 @@ def check_feed5():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")     
+      print(f"Checked RSS FEED5: {entry.id}")     
 
 if db.get_link(feed_url6) == None:
    db.update_link(feed_url6, "*")
@@ -207,7 +207,7 @@ def check_feed6():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")   
+      print(f"Checked RSS FEED6: {entry.id}")   
 
 if db.get_link(feed_url7) == None:
    db.update_link(feed_url7, "*")
@@ -229,7 +229,7 @@ def check_feed7():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")  
+      print(f"Checked RSS FEED7: {entry.id}")  
       
 
 if db.get_link(feed_url8) == None:
@@ -252,7 +252,7 @@ def check_feed8():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")  
+      print(f"Checked RSS FEED8: {entry.id}")  
       
 
 if db.get_link(feed_url9) == None:
@@ -275,7 +275,7 @@ def check_feed9():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")  
+      print(f"Checked RSS FEED9: {entry.id}")  
 
 
 if db.get_link(feed_url10) == None:
@@ -298,7 +298,7 @@ def check_feed10():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")        
+      print(f"Checked RSS FEED10: {entry.id}")        
       
 
 if db.get_link(feed_url11) == None:
@@ -321,7 +321,7 @@ def check_feed11():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")  
+      print(f"Checked RSS FEED11: {entry.id}")  
       
 
 if db.get_link(feed_url12) == None:
@@ -344,7 +344,7 @@ def check_feed12():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")        
+      print(f"Checked RSS FEED12: {entry.id}")        
 
 if db.get_link(feed_url13) == None:
    db.update_link(feed_url13, "*")
@@ -366,7 +366,7 @@ def check_feed13():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")         
+      print(f"Checked RSS FEED13: {entry.id}")         
       
 if db.get_link(feed_url14) == None:
    db.update_link(feed_url14, "*")
@@ -388,7 +388,7 @@ def check_feed14():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")
+      print(f"Checked RSS FEED14: {entry.id}")
       
 if db.get_link(feed_url15) == None:
    db.update_link(feed_url15, "*")
@@ -410,7 +410,7 @@ def check_feed15():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")
+      print(f"Checked RSS FEED15: {entry.id}")
       
 if db.get_link(feed_url16) == None:
    db.update_link(feed_url16, "*")
@@ -432,7 +432,7 @@ def check_feed16():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED: {entry.id}")      
+      print(f"Checked RSS FEED16: {entry.id}")      
       
 scheduler = BackgroundScheduler()
 scheduler.add_job(check_feed, "interval", seconds=check_interval, max_instances=max_instances, misfire_grace_time=None)
