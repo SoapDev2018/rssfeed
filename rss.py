@@ -332,12 +332,12 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed12():
     FEED = feedparser.parse(feed_url12)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url12).link:
+    if entry.title != db.get_link(feed_url12).link:
                    # ↓ Edit this message as your needs.
       message = f"/mirror@filelistbot {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url12)
+        db.update_link(feed_url12, entry.title)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
