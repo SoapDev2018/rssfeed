@@ -333,8 +333,9 @@ def check_feed12():
     FEED = feedparser.parse(feed_url12)
     entry = FEED.entries[0]
     if entry.title != db.get_link(feed_url12).link:
+      if 'remux' in entry.title.lower():
                    # ↓ Edit this message as your needs.
-      message = f"/mirror@filelistbot {entry.link}"
+      message = f"/kink {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url12, entry.title)
