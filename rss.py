@@ -334,7 +334,7 @@ def check_feed12():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url12).link:
                    # ↓ Edit this message as your needs.
-      message = f"/kink {entry.link}"
+      message = f"/mirror@filelistbot {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url12, entry.id)
