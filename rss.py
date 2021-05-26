@@ -400,9 +400,9 @@ def check_feed15():
     FEED = feedparser.parse(feed_url15)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url15).link:
-      if 'HEVC' in entry.title.lower():
+      if 'HEVC' in entry.title:
                    # ↓ Edit this message as your needs.
-        message = f"/dank {entry.link}"
+        message = f"/dank {entry.enclosures[0]['href']}"
         try:
           app.send_message(log_channel, message)
           db.update_link(feed_url15, entry.id)
