@@ -48,8 +48,8 @@ if os.environ.get("ENV"):   # Add a ENV in Environment Variables if you wanna co
   feed_url12 = os.environ.get("FEED_URL12")
   feed_url13 = os.environ.get("FEED_URL13")
   feed_url14 = os.environ.get("FEED_URL14")
-  feed_url15 = os.environ.get("FEED_URL13")
-  feed_url16 = os.environ.get("FEED_URL14")  
+  feed_url15 = os.environ.get("FEED_URL15")
+  feed_url16 = os.environ.get("FEED_URL16")  
   bot_token = os.environ.get("BOT_TOKEN")
   log_channel = int(os.environ.get("LOG_CHANNEL", None))
   check_interval = int(os.environ.get("INTERVAL", 5))
@@ -400,18 +400,19 @@ def check_feed15():
     FEED = feedparser.parse(feed_url15)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url15).link:
+      if 'HEVC' in entry.title.lower():
                    # ↓ Edit this message as your needs.
-      message = f"{entry.link}"
-      try:
-        app.send_message(log_channel, message)
-        db.update_link(feed_url15, entry.id)
-      except FloodWait as e:
-        print(f"FloodWait: {e.x} seconds")
-        sleep(e.x)
-      except Exception as e:
-        print(e)
+        message = f"/dank {entry.link}"
+        try:
+          app.send_message(log_channel, message)
+          db.update_link(feed_url15, entry.id)
+        except FloodWait as e:
+          print(f"FloodWait: {e.x} seconds")
+          sleep(e.x)
+        except Exception as e:
+          print(e)
     else:
-      print(f"Checked RSS FEED15 - Dummy")
+      print(f"Checked RSS FEED15 - MeGusta")
       
 if db.get_link(feed_url16) == None:
    db.update_link(feed_url16, "*")
