@@ -173,19 +173,19 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url5).link:
+    if entry.title != db.get_link(feed_url5).link:
                    # ↓ Edit this message as your needs.
-      message = f"/mirror {entry.link}"
+      message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url5, entry.id)
+        db.update_link(feed_url5, entry.title)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED5: {entry.id}")     
+      print(f"Checked RSS FEED5 - milkie TV")     
 
 if db.get_link(feed_url6) == None:
    db.update_link(feed_url6, "*")
