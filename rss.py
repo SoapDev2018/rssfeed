@@ -337,14 +337,14 @@ def check_feed12():
       message = f"/mirror@filelistbot {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url12, entry.id)
+        db.update_link(feed_url12)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED12: {entry.id}")        
+      print(f"Checked RSS FEED12")        
 
 if db.get_link(feed_url13) == None:
    db.update_link(feed_url13, "*")
