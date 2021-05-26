@@ -344,7 +344,7 @@ def check_feed12():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED12")        
+      print(f"Checked RSS FEED12 - FileList")        
 
 if db.get_link(feed_url13) == None:
    db.update_link(feed_url13, "*")
