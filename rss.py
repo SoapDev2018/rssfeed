@@ -286,12 +286,12 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed10():
     FEED = feedparser.parse(feed_url10)
     entry = FEED.entries[0]
-    if entry.title != db.get_link(feed_url10).link:
+    if entry.id != db.get_link(feed_url10).link:
                    # ↓ Edit this message as your needs.
       message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url10, entry.title)
+        db.update_link(feed_url10, entry.id)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
@@ -309,19 +309,19 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed11():
     FEED = feedparser.parse(feed_url11)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url11).link:
+    if entry.title != db.get_link(feed_url11).link:
                    # ↓ Edit this message as your needs.
-      message = f"/dank {entry.link}"
+      message = f"/mirror {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url11, entry.id)
+        db.update_link(feed_url11, entry.title)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED11: {entry.id}")  
+      print(f"Checked RSS FEED11 - milkie Movies")  
       
 
 if db.get_link(feed_url12) == None:
@@ -354,19 +354,19 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed13():
     FEED = feedparser.parse(feed_url13)
     entry = FEED.entries[0]
-    if entry.title != db.get_link(feed_url13).link:
+    if entry.id != db.get_link(feed_url13).link:
                    # ↓ Edit this message as your needs.
       message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url13, entry.title)
+        db.update_link(feed_url13, entry.id)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED13 - LHD Enocpdes+WEB")         
+      print(f"Checked RSS FEED13 - LHD Encodes+WEB")         
       
 if db.get_link(feed_url14) == None:
    db.update_link(feed_url14, "*")
