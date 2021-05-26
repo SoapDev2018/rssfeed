@@ -335,15 +335,15 @@ def check_feed12():
     if entry.title != db.get_link(feed_url12).link:
       if 'remux' in entry.title.lower():
                    # ↓ Edit this message as your needs.
-      message = f"/kink {entry.link}"
-      try:
-        app.send_message(log_channel, message)
-        db.update_link(feed_url12, entry.title)
-      except FloodWait as e:
-        print(f"FloodWait: {e.x} seconds")
-        sleep(e.x)
-      except Exception as e:
-        print(e)
+        message = f"/kink {entry.link}"
+        try:
+          app.send_message(log_channel, message)
+          db.update_link(feed_url12, entry.title)
+        except FloodWait as e:
+          print(f"FloodWait: {e.x} seconds")
+          sleep(e.x)
+        except Exception as e:
+          print(e)
     else:
       print(f"Checked RSS FEED12 - FileList")        
 
