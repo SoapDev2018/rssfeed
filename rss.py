@@ -287,8 +287,11 @@ def check_feed10():
     FEED = feedparser.parse(feed_url10)
     entry = FEED.entries[0]
     if entry.link != db.get_link(feed_url10).link:
+      if 'remux' in entry.link.lower():
+        message = f"/kink {entry.enclosures[0]['href']}"
                    # ↓ Edit this message as your needs.
-      message = f"/get {entry.enclosures[0]['href']}"
+      else:
+        message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url10, entry.link)
