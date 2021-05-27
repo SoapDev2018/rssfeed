@@ -286,12 +286,12 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed10():
     FEED = feedparser.parse(feed_url10)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url10).link:
+    if entry.link != db.get_link(feed_url10).link:
                    # ↓ Edit this message as your needs.
       message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url10, entry.id)
+        db.update_link(feed_url10, entry.link)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
@@ -355,12 +355,12 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed13():
     FEED = feedparser.parse(feed_url13)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url13).link:
+    if entry.link != db.get_link(feed_url13).link:
                    # ↓ Edit this message as your needs.
       message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url13, entry.id)
+        db.update_link(feed_url13, entry.link)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
