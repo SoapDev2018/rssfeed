@@ -287,7 +287,7 @@ def check_feed10():
     FEED = feedparser.parse(feed_url10)
     entry = FEED.entries[0]
     if entry.link != db.get_link(feed_url10).link:
-      if 'remux' in entry.link.lower():
+      if 'REMUX' in entry.title:
         message = f"/kink {entry.enclosures[0]['href']}"
                    # ↓ Edit this message as your needs.
       else:
