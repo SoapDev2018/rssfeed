@@ -175,7 +175,7 @@ def check_feed5():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
                    # ↓ Edit this message as your needs.
-      message = f"/dank {entry.link}"
+      message = f"/get {entry.enclosures[0]['href']}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url5, entry.id)
@@ -185,7 +185,7 @@ def check_feed5():
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED5 - Larmer")     
+      print(f"Checked RSS FEED5 - LHD Encodes")     
 
 if db.get_link(feed_url6) == None:
    db.update_link(feed_url6, "*")
