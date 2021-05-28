@@ -173,19 +173,19 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
-    if entry.title != db.get_link(feed_url5).link:
+    if entry.id != db.get_link(feed_url5).link:
                    # ↓ Edit this message as your needs.
       message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url5, entry.title)
+        db.update_link(feed_url5, entry.id)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED5 - milkie TV")     
+      print(f"Checked RSS FEED5 - Larmer")     
 
 if db.get_link(feed_url6) == None:
    db.update_link(feed_url6, "*")
@@ -312,19 +312,19 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed11():
     FEED = feedparser.parse(feed_url11)
     entry = FEED.entries[0]
-    if entry.title != db.get_link(feed_url11).link:
+    if entry.id != db.get_link(feed_url11).link:
                    # ↓ Edit this message as your needs.
       message = f"/mirror {entry.link}"
       try:
         app.send_message(log_channel, message)
-        db.update_link(feed_url11, entry.title)
+        db.update_link(feed_url11, entry.id)
       except FloodWait as e:
         print(f"FloodWait: {e.x} seconds")
         sleep(e.x)
       except Exception as e:
         print(e)
     else:
-      print(f"Checked RSS FEED11 - milkie Movies")  
+      print(f"Checked RSS FEED11 - jeddak")  
       
 
 if db.get_link(feed_url12) == None:
