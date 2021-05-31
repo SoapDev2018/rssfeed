@@ -62,6 +62,7 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 def check_feed():
     FEED = feedparser.parse(feed_url)
+    print(f"check_feed status: {FEED.status}")
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url).link:
                    # ↓ Edit this message as your needs.
@@ -106,6 +107,7 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
       
 def check_feed2():
     FEED = feedparser.parse(feed_url2)
+    print(f"check_feed2 status: {FEED.status}")
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
                    # ↓ Edit this message as your needs.
