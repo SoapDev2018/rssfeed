@@ -44,7 +44,7 @@ def check_feed():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url).link:
       if '720p' in entry.title or 'hdtv' in entry.title.lower():
-        continue
+        message = f"{entry.link}"
       else:
                    # ↓ Edit this message as your needs.
         message = f"/mirror {entry.link}"
@@ -70,7 +70,7 @@ def check_feed1():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url1).link:
       if '720p' in entry.title or 'hdtv' in entry.title.lower():
-        continue
+        message = f"{entry.link}"
       else:
                    # ↓ Edit this message as your needs.
         message = f"/dank {entry.link}"
@@ -93,7 +93,7 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed2():
     FEED = feedparser.parse(feed_url2)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url5).link:
+    if entry.id != db.get_link(feed_url2).link:
                    # ↓ Edit this message as your needs.
       message = f"/dank {entry.link}"
       try:
