@@ -43,8 +43,8 @@ def check_feed():
     FEED = feedparser.parse(feed_url)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url).link:
-      if '720p' in entry.title:
-        message = f"{entry.link}"
+      if '720p' in entry.title or 'hdtv' in entry.title.lower():
+        continue
       else:
                    # ↓ Edit this message as your needs.
         message = f"/mirror {entry.link}"
@@ -69,8 +69,8 @@ def check_feed1():
     FEED = feedparser.parse(feed_url1)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url1).link:
-      if '720p' in entry.title:
-        message = f"{entry.link}"
+      if '720p' in entry.title or 'hdtv' in entry.title.lower():
+        continue
       else:
                    # ↓ Edit this message as your needs.
         message = f"/dank {entry.link}"
