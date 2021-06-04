@@ -169,6 +169,8 @@ def check_feed5():
       if 'x265' in entry.title:
                    # ↓ Edit this message as your needs.
         message = f"/dank {entry.enclosures[0]['href']}"
+      else:
+        message = f"{entry.enclosures[0]['href']}"
         try:
           app.send_message(log_channel, message)
           db.update_link(feed_url5, entry.id)
