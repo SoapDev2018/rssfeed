@@ -43,7 +43,7 @@ def check_feed():
     FEED = feedparser.parse(feed_url)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url).link:
-        if '720p' in entry.title or 'hdtv' in entry.title.lower():
+        if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower():
             message = f"{entry.link}"
         else:
                    # ↓ Edit this message as your needs.
@@ -57,7 +57,7 @@ def check_feed():
         except Exception as e:
           print(e)
     else:
-      print(f"Checked RSS FEED - RARBG Movies")
+      print(f"Checked RSS FEED - TGx Movies")
       
 
 if db.get_link(feed_url1) == None:
