@@ -142,7 +142,7 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed4():
     FEED = feedparser.parse(feed_url4)
     entry = FEED.entries[0]
-    if entry.id != db.get_link(feed_url3).link:
+    if entry.id != db.get_link(feed_url4).link:
         if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'yts' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower() or 'galaxyrg' in entry.title.lower():
             message = f"{entry.link}"
         else:
