@@ -166,11 +166,11 @@ def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
-      if 'x265' in entry.title:
+      if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower():
                    # ↓ Edit this message as your needs.
-        message = f"/dank {entry.enclosures[0]['href']}"
-      else:
         message = f"{entry.enclosures[0]['href']}"
+      else:
+        message = f"/dank {entry.enclosures[0]['href']}"
         try:
           app.send_message(log_channel, message)
           db.update_link(feed_url5, entry.id)
