@@ -142,20 +142,22 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def check_feed4():
     FEED = feedparser.parse(feed_url4)
     entry = FEED.entries[0]
-    if entry.title != db.get_link(feed_url4).link:
-      if 'remux' in entry.title.lower():
+    if entry.id != db.get_link(feed_url3).link:
+        if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'yts' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower() or 'galaxyrg' in entry.title.lower():
+            message = f"{entry.link}"
+        else:
                    # ↓ Edit this message as your needs.
-        message = f"/kink {entry.link}"
+            message = f"/mirror {entry.enclosures[0]['href']}"
         try:
           app.send_message(log_channel, message)
-          db.update_link(feed_url4, entry.title)
+          db.update_link(feed_url4, entry.id)
         except FloodWait as e:
           print(f"FloodWait: {e.x} seconds")
           sleep(e.x)
         except Exception as e:
           print(e)
     else:
-      print(f"Checked RSS FEED4 - FileList")         
+      print(f"Checked RSS FEED4 - TorrentFunk Movies")        
       
 if db.get_link(feed_url5) == None:
    db.update_link(feed_url5, "*")
