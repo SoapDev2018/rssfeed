@@ -168,7 +168,7 @@ def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
-      if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower() or '480p' in entry.title.lower():
+      if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower() or '480p' in entry.title.lower()  or 'xvid' in entry.title.lower():
                    # ↓ Edit this message as your needs.
         message = f"{entry.enclosures[0]['href']}"
       else:
