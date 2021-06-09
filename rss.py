@@ -94,8 +94,11 @@ def check_feed2():
     FEED = feedparser.parse(feed_url2)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
+      if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower() or '480p' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mvgroup' in entry.title.lower():
+        message = f"{entry.link}"
+      else:
                    # ↓ Edit this message as your needs.
-      message = f"/dank {entry.link}"
+        message = f"/dank {entry.link}"
       try:
         app.send_message(log_channel, message)
         db.update_link(feed_url2, entry.id)
