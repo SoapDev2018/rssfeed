@@ -43,7 +43,7 @@ def check_feed():
     FEED = feedparser.parse(feed_url)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url).link:
-        if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower() or 'ddr' in entry.title.lower() or '480p' in entry.title.lower() or 'xvid' in entry.title.lower():
+        if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower() or 'ddr' in entry.title.lower() or '480p' in entry.title.lower() or 'xvid' in entry.title.lower() or 'BRAZINO777' in entry.title  or 'armor' in entry.title.lower() or 'meguil' in entry.title.lower()  or 'mp4' in entry.title  or 'melbet' in entry.title.lower():
             message = f"{entry.link}"
         else:
                    # ↓ Edit this message as your needs.
@@ -146,8 +146,8 @@ def check_feed4():
     FEED = feedparser.parse(feed_url4)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url4).link:
-        if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'yts' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower() or 'galaxyrg' in entry.title.lower()  or '480p' in entry.title.lower():
-            message = f"{entry.link}"
+        if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'BRAZINO777' in entry.title or 'yts' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title or 'galaxyrg' in entry.title.lower()  or '480p' in entry.title.lower()  or 'armor' in entry.title.lower()  or 'domino' in entry.title.lower():
+            message = f"Unwanted"
         else:
                    # ↓ Edit this message as your needs.
             message = f"/mirror {entry.enclosures[0]['href']}"
@@ -171,7 +171,7 @@ def check_feed5():
     FEED = feedparser.parse(feed_url5)
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url5).link:
-      if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title.lower() or '480p' in entry.title.lower()  or 'xvid' in entry.title.lower():
+      if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title or '480p' in entry.title.lower()  or 'xvid' in entry.title.lower():
                    # ↓ Edit this message as your needs.
         message = f"{entry.enclosures[0]['href']}"
       else:
