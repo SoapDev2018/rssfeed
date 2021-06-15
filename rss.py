@@ -46,7 +46,7 @@ def check_feed():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url).link:
         if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower() or 'ddr' in entry.title.lower() or '480p' in entry.title.lower() or 'xvid' in entry.title.lower() or 'BRAZINO777' in entry.title  or 'armor' in entry.title.lower() or 'meguil' in entry.title.lower()  or 'mp4' in entry.title  or 'melbet' in entry.title.lower():
-            message = f"{entry.link}"
+            continue
         else:
                    # ↓ Edit this message as your needs.
             message = f"/mirror {entry.link}"
@@ -72,7 +72,7 @@ def check_feed1():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url1).link:
       if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower() or '480p' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mvgroup' in entry.title.lower() or 'tgx' in entry.title.lower():
-        message = f"{entry.link}"
+        continue
       else:
                    # ↓ Edit this message as your needs.
         message = f"/dank {entry.link}"
@@ -97,7 +97,7 @@ def check_feed2():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url2).link:
       if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'galaxyrg' in entry.title.lower() or '480p' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mvgroup' in entry.title.lower():
-        message = f"{entry.link}"
+        continue
       else:
                    # ↓ Edit this message as your needs.
         message = f"/dank {entry.link}"
@@ -149,7 +149,7 @@ def check_feed4():
     entry = FEED.entries[0]
     if entry.id != db.get_link(feed_url4).link:
         if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'BRAZINO777' in entry.title or 'yts' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title or 'galaxyrg' in entry.title.lower()  or '480p' in entry.title.lower()  or 'armor' in entry.title.lower()  or 'domino' in entry.title.lower():
-            message = f"Unwanted"
+            continue
         else:
                    # ↓ Edit this message as your needs.
             message = f"/mirror {entry.enclosures[0]['href']}"
@@ -175,7 +175,7 @@ def check_feed5():
     if entry.id != db.get_link(feed_url5).link:
       if '720p' in entry.title or 'hdtv' in entry.title.lower() or 'avi' in entry.title.lower() or 'xvid' in entry.title.lower() or 'mp4' in entry.title or '480p' in entry.title.lower()  or 'xvid' in entry.title.lower():
                    # ↓ Edit this message as your needs.
-        message = f"{entry.enclosures[0]['href']}"
+        continue
       else:
         message = f"/dank {entry.enclosures[0]['href']}"
         try:
@@ -203,7 +203,7 @@ def check_feed6():
                    # ↓ Edit this message as your needs.
         message = f"/nani {entry.link}"
       else:
-        message = f"noshit"
+        continue
         try:
           app.send_message(log_channel, message)
           db.update_link(feed_url6, entry.id)
