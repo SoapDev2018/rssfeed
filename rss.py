@@ -204,14 +204,14 @@ def check_feed6():
         message = f"/nani {entry.link}"
       else:
        continue
-        try:
-          app.send_message(log_channel, message)
-          db.update_link(feed_url6, entry.id)
-        except FloodWait as e:
-          print(f"FloodWait: {e.x} seconds")
-          sleep(e.x)
-        except Exception as e:
-          print(e)
+      try:
+        app.send_message(log_channel, message)
+        db.update_link(feed_url6, entry.id)
+      except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+      except Exception as e:
+        print(e)
     else:
       print(f"Checked RSS FEED6 - Nyaa")
         
